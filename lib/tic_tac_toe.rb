@@ -38,7 +38,7 @@ class TicTacToe
   end
   
   def valid_move?(index)
-    if index == 0..8 && !position_taken?(index)
+    if index.between?(0, 8) && !position_taken?(index)
       true 
     else
       false 
@@ -57,9 +57,9 @@ end
   
   def current_player
     if turn_count.even?
-      current_player = "X"
+      "X"
     else
-      current_player = "O"
+      "O"
     end
   end
       
@@ -73,6 +73,7 @@ end
      else
        turn
      end
+     
   end
   
   def won?
@@ -94,7 +95,7 @@ end
 end
 
   def draw? 
-    !won? && full?
+    full? && !won? 
 #       false
 #     else if 
 #       full? == false 
@@ -122,14 +123,14 @@ def congrats
     elsif winner == "O"
     puts "Congratulations O!"
     elsif draw? 
-    puts "Cat's game!"
+    puts "Cat's Game!"
   end
 end
 
 
   def play 
     turn until over?
-      binding.pry 
+   #   binding.pry 
       congrats 
     
 end
