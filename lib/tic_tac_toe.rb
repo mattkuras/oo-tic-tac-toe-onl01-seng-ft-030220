@@ -76,45 +76,44 @@ end
   end
   
   def won?
-    WIN_COMBINATIONS.find do |combo|
-     position_taken?(combo[0]) &&
-    @board[combo[0]] == @board[combo[1]] &&
-    @board[combo[0]] == @board[combo[2]]
+    WIN_COMBINATIONS.any? do |combo|
+     # binding.pry 
+     if position_taken?(combo[0]) && @board[combo[0]] == @board[combo[1]] && @board[combo[0]] == @board[combo[2]]
+       return combo 
+     end
   end
   end
   
   def full?
-    unless @board.include?(" ")
-    return true  
-  else
-    false
-  end
+    @board.all? {|position| position != " "}
+  #   if @board.include?(" ")
+  #   return false   
+  # else
+  #   true 
+  # end
 end
 
   def draw? 
-    if won?
-      false
-    else if 
-      full? == false 
-      false 
-    else true
-  end
-end
+    !won? && full?
+#       false
+#     else if 
+#       full? == false 
+#       false 
+#     else true
+#   end
+# end
 end
   
   def over?
-    if won? || full?
-      true 
-    end
+     won? || draw?
   end
   
   def winner 
     if won? && current_player == "X"
       "O"
-    else if won? && current_player == "O"
+    elsif won? && current_player == "O"
       "X"
     end
-  end
 end
 
 def congrats 
@@ -129,15 +128,9 @@ end
 
 
   def play 
-    unless over? 
-    turn
-    if over?
-      congrats
-    else
-      turn 
-    end
-  end
+    turn until over?
+      binding.pry 
+      congrats 
+    
 end
-   
-  
 end
