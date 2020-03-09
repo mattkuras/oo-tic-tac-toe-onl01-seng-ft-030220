@@ -94,7 +94,7 @@ end
 end
 
   def draw? 
-    !won? && full?
+    full? && !won? 
 #       false
 #     else if 
 #       full? == false 
