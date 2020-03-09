@@ -73,7 +73,7 @@ end
      else
        turn
      end
-     display_board
+     
   end
   
   def won?
