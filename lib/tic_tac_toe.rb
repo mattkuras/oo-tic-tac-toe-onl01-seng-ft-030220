@@ -123,7 +123,7 @@ def congrats
     elsif winner == "O"
     puts "Congratulations O!"
     elsif draw? 
-    puts "Cat's game!"
+    puts "Cat's Game!"
   end
 end
 
