@@ -130,7 +130,7 @@ end
 
   def play 
     turn until over?
-      binding.pry 
+   #   binding.pry 
       congrats 
     
 end
